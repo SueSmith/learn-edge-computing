@@ -72,10 +72,11 @@
               "tooltip": "Grab a link to share your draft app"
             },
             {
-              "name": "🚀 Publish",
+              "name": "🧩 Start",
               "singleInstance": true,
-              "command": "bash helpers/publish.sh",
-              "tooltip": "Publish your content to Fastly Compute"
+              "useVsCodeApi": true,
+              "command": "workbench.action.tasks.runTask",
+              "tooltip": "Start a new Compute project"
             }
           ],
           "defaultColor": "none",
