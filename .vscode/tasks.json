@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "🪩 JavaScript starter",
+            "command": "bash helpers/test.sh https://github.com/fastly/compute-starter-kit-javascript-default",
+            "detail": "A simple starter kit to learn Compute with JS",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "🌎 Expressly starter",
+            "command": "bash helpers/welcome.sh",
+            "detail": "Use express style routing in your Compute app",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "label": "🛼 Fanout starter",
+            "command": "bash helpers/welcome.sh",
+            "detail": "Do something super cool with Fanout",
+            "problemMatcher": []
+        }
+    ]
+}
