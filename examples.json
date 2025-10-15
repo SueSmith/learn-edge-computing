@@ -1,0 +1,2367 @@
+[
+  {
+    "title": "Purge everything under a URL path prefix",
+    "summary": "Use surrogate keys to link all objects under each path prefix, allowing wildcard purging of all URLs that share a common prefix.",
+    "tags": ["Performance", "Cache", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "5e2d73d7"
+      },
+      "rust": {
+        "fiddleID": "c36ad4fe"
+      },
+      "javascript": {
+        "fiddleID": "0c73038e"
+      },
+      "go": {
+        "fiddleID": "d1702060"
+      }
+    }
+  },
+  {
+    "title": "Verify if a web crawler accessing your server really is Googlebot",
+    "summary": "An implementation of Google's recommended mechanism for verifying googlebot",
+    "tags": ["SEO", "Response manipulation"],
+    "implementations": {
+      "rust": {
+        "fiddleID": "057c3605"
+      },
+      "javascript": {
+        "fiddleID": "778778b8"
+      },
+      "go": {
+        "fiddleID": "c302576f"
+      }
+    },
+    "topics": ["seo"]
+  },
+  {
+    "title": "Mutual TLS to origin",
+    "slug": "origin-mtls",
+    "summary": "Store your client certificate in a Fastly secret store to enable mTLS on backend requests.",
+    "tags": ["Request manipulation", "Security"],
+    "implementations": {
+      "rust": {
+        "fiddleID": "beebd3d5"
+      }
+    }
+  },
+  {
+    "title": "Add a new field to a JSON response",
+    "summary": "Decorate API responses in JSON format with new fields.",
+    "tags": ["Response manipulation"],
+    "implementations": {
+      "rust": {
+        "fiddleID": "bb9fe0c5"
+      },
+      "javascript": {
+        "fiddleID": "f191b424",
+        "expressly": true
+      },
+      "go": {
+        "fiddleID": "0c5104e7"
+      }
+    },
+    "topics": ["personalization"]
+  },
+  {
+    "title": "Populate template placeholders in streaming responses",
+    "slug": "template-engine-stream-transform",
+    "summary": "Use a transform stream to search the body of a response and replace simple template placeholders with content generated at the edge, without buffering.",
+    "tags": ["Response manipulation", "Developer experience"],
+    "implementations": {
+      "javascript": {
+        "fiddleID": "d89c6eeb"
+      }
+    }
+  },
+  {
+    "title": "Use a templating library at the edge",
+    "slug": "template-language-render",
+    "summary": "Generate an invoice at the edge by rendering an HTML template with the full power of a popular template engine.",
+    "tags": ["Response manipulation", "Developer experience"],
+    "implementations": {
+      "rust": {
+        "fiddleID": "f71c4a4d"
+      },
+      "javascript": {
+        "fiddleID": "5c46ee09"
+      },
+      "go": {
+        "fiddleID": "9ea26a69"
+      }
+    }
+  },
+  {
+    "title": "Geo-IP API at the edge",
+    "slug": "geo-ip-api-at-the-edge",
+    "summary": "Create an API endpoint for fetching geolocation data for the requesting browser, implemented 100% at the edge. The response should show your current approximate location, but no requests to any origin servers.",
+    "tags": ["Geolocation", "Response manipulation", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "63738ad9",
+        "tokens": [
+          "client.geo.gmt_offset",
+          "client.geo.city",
+          "client.geo.country_name",
+          "client.geo.ip_override",
+          "client.as.name",
+          "json.escape"
+        ]
+      },
+      "rust": {
+        "fiddleID": "1353831a"
+      },
+      "javascript": {
+        "fiddleID": "6a27a6f3"
+      },
+      "go": {
+        "fiddleID": "f1cf981d"
+      }
+    },
+    "topics": ["geolocation"]
+  },
+  {
+    "title": "Tag requests with geolocation data",
+    "slug": "decorating-origin-requests-with-geoip",
+    "summary": "Add geolocation data about the client browser as extra headers in any requests from Fastly to your origin.",
+    "tags": ["Geolocation", "Request manipulation", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "761b3179",
+        "tokens": [
+          "client.geo.continent_code",
+          "client.geo.country_code",
+          "client.geo.city",
+          "client.geo.latitude",
+          "client.geo.longitude",
+          "server.datacenter"
+        ]
+      },
+      "rust": {
+        "fiddleID": "4e66bad3"
+      },
+      "javascript": {
+        "fiddleID": "8eba4fe8"
+      },
+      "go": {
+        "fiddleID": "af63c62f"
+      }
+    },
+    "topics": ["geolocation"]
+  },
+  {
+    "title": "Apply feature flags from an origin API",
+    "slug": "preflighting-for-flags",
+    "summary": "Park request, make a different request first, use the response to annotate the real origin request (or make decisions about how to route it).",
+    "tags": ["Fetch", "Request manipulation", "Cache", "Personalization"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "f1bbff1e",
+        "tokens": ["req.restarts", "req.url"]
+      },
+      "javascript": {
+        "fiddleID": "7889dda2"
+      },
+      "rust": {
+        "fiddleID": "0a32d918"
+      },
+      "go": {
+        "fiddleID": "65a5cb9f"
+      }
+    },
+    "topics": ["personalization"]
+  },
+  {
+    "title": "Enforce a paywall using an origin API",
+    "slug": "preflighting-for-paywall",
+    "summary": "Use a custom Paywall header to trigger preflight requests to authenticate every article view with a backend paywall service.",
+    "tags": ["Fetch", "Request manipulation", "Cache", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "0f3e933e"
+      },
+      "rust": {
+        "fiddleID": "eccda2a8"
+      },
+      "go": {
+        "fiddleID": "94fa3fbe"
+      },
+      "javascript": {
+        "fiddleID": "682bf021"
+      }
+    },
+    "topics": ["authentication"]
+  },
+  {
+    "title": "Detect leaked passwords",
+    "slug": "threat-intelligence-preflight",
+    "summary": "Detect requests that contain submitted passwords and use a service to determine whether the password has leaked before allowing the request to proceed to origin (data from haveibeenpwned).",
+    "tags": ["Fetch", "Request manipulation", "Cache", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "8921dbf8",
+        "tokens": ["std.strstr", "restart", "req.restarts"]
+      },
+      "rust": {
+        "fiddleID": "235151db"
+      },
+      "javascript": {
+        "fiddleID": "6d8cf11c"
+      },
+      "go": {
+        "fiddleID": "0a3a25f8"
+      }
+    },
+    "topics": ["authentication"],
+    "featured": 4
+  },
+  {
+    "title": "Convert timestamps to relative times like '2 hours ago'",
+    "slug": "relative-date-insertion-using-esi",
+    "summary": "Generate relative time datelines at the Edge instead of in the browser or at origin. Better caching, faster rendering, fewer reflows.",
+    "tags": ["Response manipulation", "ESI", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "f2842f47",
+        "tokens": ["esi", "std.integer2time", "regsub", "synthetic"]
+      },
+      "rust": {
+        "fiddleID": "4cc78464"
+      },
+      "javascript": {
+        "fiddleID": "7924df60"
+      }
+    }
+  },
+  {
+    "title": "Add www. to apex hostname and subdomains",
+    "summary": "Detect requests that don't include a www. prefix, and redirect to the equivalent path on a hostname that starts with www., usually to make sure there's only one canonical location for your content.",
+    "tags": ["Request manipulation", "Cache", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "28f73aba",
+        "tokens": ["obj.status"]
+      },
+      "javascript": {
+        "fiddleID": "74defe2d"
+      },
+      "rust": {
+        "fiddleID": "10a6d8d5"
+      },
+      "go": {
+        "fiddleID": "a59a0895"
+      }
+    },
+    "topics": ["seo"]
+  },
+  {
+    "title": "Serve stale to search crawlers for better ranking",
+    "slug": "serve-stale-to-search-crawlers",
+    "summary": "Prioritize human traffic over search crawlers by serving stale content to crawlers.",
+    "tags": ["Cache", "Response manipulation", "SEO"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "c12d9b59",
+        "tokens": ["stale.exists", "restart"]
+      }
+    },
+    "topics": ["seo"]
+  },
+  {
+    "title": "Support caching of OPTIONS requests",
+    "slug": "support-caching-of-options-requests",
+    "summary": "Normally OPTIONS requests aren't cacheable. Allow caching of OPTIONS by converting the request to a GET and back to OPTIONS if it's a cache miss.",
+    "tags": ["Cache", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "141cb91b",
+        "tokens": ["req.hash", "vcl_hash"]
+      }
+    }
+  },
+  {
+    "title": "Override TTLs based on content type",
+    "slug": "overriding-ttls-based-on-content-type",
+    "summary": "Set TTLs at the edge based on the type of resource. Better done at origin, but this can be a great 'quick fix' or a solution if you don't control the origin.",
+    "tags": ["Cache", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "78c50399",
+        "tokens": ["beresp.ttl", "vcl_fetch"]
+      }
+    }
+  },
+  {
+    "title": "Override TTLs for path prefixes",
+    "slug": "overriding-ttls-path-prefix",
+    "summary": "Set TTLs at the edge based on looking up a path prefix in a dictionary.",
+    "tags": ["Cache", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "2cae85a6",
+        "tokens": ["table.contains"]
+      },
+      "rust": {
+        "fiddleID": "af35654e"
+      },
+      "javascript": {
+        "fiddleID": "f1a0989e"
+      },
+      "go": {
+        "fiddleID": "8d8c380e"
+      }
+    }
+  },
+  {
+    "title": "Push prices or breaking news in real time with Server-Sent-Events",
+    "slug": "streaming-server-sent-events",
+    "summary": "Stream responses to the browser while still receiving data from the origin and also saving it to cache. Great for spreading out server-sent-events streams to millions of users from a single source stream.",
+    "tags": ["Cache", "Response manipulation", "Performance"],
+    "topics": ["real-time"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "496eb769",
+        "tokens": ["beresp.do_stream", "req.http.Fastly-FF"]
+      },
+      "rust": {
+        "fiddleID": "d8f237e6"
+      },
+      "javascript": {
+        "fiddleID": "e9e8bdd8"
+      }
+    }
+  },
+  {
+    "title": "Map IPv6 addresses to IPv4 address space",
+    "slug": "ipv6-to-ipv4-translation",
+    "summary": "Create an identifier that looks like an IPv4 address if the user has made their request using IPv6. Useful for origin servers that require an IPv4 address for some reason.",
+    "implementations": {
+      "vcl": {
+        "fiddleID": "f1afbd0f"
+      },
+      "rust": {
+        "fiddleID": "46e535a6"
+      },
+      "javascript": {
+        "fiddleID": "bf00b4ff"
+      }
+    }
+  },
+  {
+    "title": "Capture and aggregate log data from client devices",
+    "slug": "no-origin-rum-logging",
+    "summary": "Collect and aggregate log data submitted from browsers directly into S3 or another log store without having to handle the traffic at your origin.",
+    "tags": ["Logging", "Observability"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "0dbfe35e",
+        "tokens": ["req.url.path", "querystring.add", "req.url.qs", "obj.status"]
+      },
+      "rust": {
+        "fiddleID": "6509bd22"
+      },
+      "javascript": {
+        "fiddleID": "0db5d1c2"
+      },
+      "go": {
+        "fiddleID": "a8a3d4d5"
+      }
+    }
+  },
+  {
+    "title": "Use microservices to divide up a domain",
+    "slug": "url-path-based-routing-for-microservices",
+    "summary": "Send request to different origin servers based on the URL path.",
+    "tags": ["Backends", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "296463fa",
+        "tokens": ["req.backend", "req.url", "vcl_recv"]
+      },
+      "rust": {
+        "fiddleID": "04981f21"
+      },
+      "javascript": {
+        "fiddleID": "44cdb11b",
+        "expressly": true
+      },
+      "go": {
+        "fiddleID": "7101579a"
+      }
+    },
+    "topics": ["seo"]
+  },
+  {
+    "title": "Replace origin errors with 'safe' responses",
+    "summary": "Detect specified response statuses from backends and instead serve a precomposed error page or error content generated at the edge.",
+    "tags": ["Response manipulation", "Errors", "Cache", "Resilience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "3b66679e",
+        "tokens": ["http_status_matches", "vcl_error"]
+      },
+      "rust": {
+        "fiddleID": "2604b381"
+      },
+      "go": {
+        "fiddleID": "074c4a84"
+      },
+      "javascript": {
+        "fiddleID": "16b427dd"
+      }
+    }
+  },
+  {
+    "title": "Answer CORS OPTIONS preflight requests at the edge",
+    "slug": "cors-options-preflights-at-the-edge",
+    "summary": "Browsers send OPTIONS requests before performing cross-origin POSTs. You can answer these requests directly from the edge.",
+    "tags": ["Response manipulation", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "d29a4668"
+      },
+      "rust": {
+        "fiddleID": "47852515"
+      },
+      "javascript": {
+        "fiddleID": "dfc6be04"
+      },
+      "go": {
+        "fiddleID": "4d73c310"
+      }
+    }
+  },
+  {
+    "title": "Apply HTTP basic auth to private endpoints",
+    "slug": "http-basic-auth",
+    "summary": "Store username/password list in a dictionary, authorize user at the edge, reject requests that don't have correct credentials.",
+    "tags": ["Request manipulation", "Edge data", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "52e09355",
+        "tokens": ["table.lookup", "digest.base64_decode", "digest.secure_is_equal", "digest.hash_md5", "if"]
+      },
+      "rust": {
+        "fiddleID": "328c0b8b"
+      },
+      "javascript": {
+        "fiddleID": "772e8ec8"
+      },
+      "go": {
+        "fiddleID": "9cd9b799"
+      }
+    }
+  },
+  {
+    "title": "Serve robots.txt from the edge",
+    "summary": "Serve full text of robots.txt as a synthetic response to avoid requests hitting your origin.",
+    "tags": ["Response manipulation", "Edge data", "SEO"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "86d00fbf",
+        "tokens": ["synthetic"]
+      },
+      "rust": {
+        "fiddleID": "8c6bdb0e"
+      },
+      "javascript": {
+        "fiddleID": "f19ed544"
+      },
+      "go": {
+        "fiddleID": "e46a3286"
+      }
+    },
+    "topics": ["seo"]
+  },
+  {
+    "title": "Serve stale content from cache while origins are offline",
+    "slug": "serve-stale-on-origin-failure",
+    "summary": "Deal with all potential scenarios for using stale content to satisfy requests when origin is unhealthy or misbehaving.",
+    "tags": ["Response manipulation", "Cache", "Resilience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "e9f9ebb5",
+        "tokens": ["stale.exists", "beresp.ttl", "beresp.stale_while_revalidate", "beresp.stale_if_error"]
+      }
+    }
+  },
+  {
+    "title": "Load balance randomly across multiple backends",
+    "slug": "random-director-with-weighted-probability",
+    "summary": "Load balance requests randomly across multiple backends, dropping them automatically if they become unhealthy.",
+    "tags": ["Backends", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "4a742de4",
+        "tokens": ["director"]
+      },
+      "rust": {
+        "fiddleID": "67dce0e8"
+      },
+      "javascript": {
+        "fiddleID": "85eab54a"
+      },
+      "go": {
+        "fiddleID": "f8744a89"
+      }
+    }
+  },
+  {
+    "title": "Load balance to optimise upstream caching with hash directors",
+    "slug": "consistent-hashing-director",
+    "summary": "Map requests to backends consistently, which can be useful to improve your internal cache and replication efficiency.",
+    "tags": ["Backends", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "02cb5c96",
+        "tokens": ["director"]
+      },
+      "rust": {
+        "fiddleID": "fc272532"
+      },
+      "javascript": {
+        "fiddleID": "f189e3c1"
+      }
+    }
+  },
+  {
+    "title": "Cycle through backends until a healthy server is found",
+    "slug": "fallback-director",
+    "summary": "Try backends in turn until one is healthy (also known as an 'active-standby' strategy).",
+    "tags": ["Backends", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "95cf1ca0",
+        "tokens": ["director"]
+      }
+    }
+  },
+  {
+    "title": "Sticky sessions using client directors",
+    "slug": "client-director",
+    "summary": "Map requests to backends based on user ID (a.k.a., \"sticky sessions\").",
+    "tags": ["Backends", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "25f7f634",
+        "tokens": ["client.identity", "director"]
+      },
+      "rust": {
+        "fiddleID": "541d3125"
+      },
+      "javascript": {
+        "fiddleID": "8fcdc90c"
+      }
+    }
+  },
+  {
+    "title": "Log the data you need for actionable insights",
+    "slug": "custom-logging",
+    "summary": "Emit logging data to your chosen log endpoint from any VCL stage, not just vcl_log.",
+    "tags": ["Backends", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "35278adf"
+      },
+      "rust": {
+        "fiddleID": "b58f756a"
+      },
+      "javascript": {
+        "fiddleID": "044668cb"
+      },
+      "go": {
+        "fiddleID": "c68674a5"
+      }
+    }
+  },
+  {
+    "title": "Serve small binary assets direct from edge",
+    "slug": "synthetic-binary-responses",
+    "summary": "Serve binary objects, such as images, directly from edge configuration.",
+    "tags": ["Response manipulation", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "cf18432f",
+        "tokens": ["synthetic.base64"]
+      },
+      "rust": {
+        "fiddleID": "33a96db1"
+      },
+      "javascript": {
+        "fiddleID": "3cdcf4f2"
+      },
+      "go": {
+        "fiddleID": "aa0f7447"
+      }
+    }
+  },
+  {
+    "title": "Create self-destructing URLs for time-limited access",
+    "slug": "time-limited-url-tokens",
+    "summary": "Make URLs expire after a configurable period.",
+    "tags": ["Request manipulation", "Edge data", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "f4641d6c",
+        "tokens": ["subfield", "digest.hmac_sha1", "time.is_after", "std.atoi"]
+      },
+      "rust": {
+        "fiddleID": "0e673612"
+      },
+      "javascript": {
+        "fiddleID": "08f5ea3d",
+        "expressly": true
+      },
+      "go": {
+        "fiddleID": "cd8f4f87"
+      }
+    }
+  },
+  {
+    "title": "Transform and optimize images on the fly",
+    "slug": "image-optimization",
+    "summary": "Use Fastly Image Optimizer to transform and serve images at the edge, closer to your users.",
+    "tags": ["Image opto", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "475a0d98"
+      }
+    }
+  },
+  {
+    "title": "Use content-type of response to trigger image optimization",
+    "slug": "io-response-content-type",
+    "summary": "Typically requests are flagged for IO before they are sent to a backend, but using a restart in VCL, you can inspect a response before deciding whether to optimize it.",
+    "tags": ["Image opto", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "c85a8503"
+      }
+    }
+  },
+  {
+    "title": "Schedule a cache invalidation at a predefined time",
+    "slug": "scheduled-invalidation",
+    "summary": "Purge your edge cache automatically at a certain time. This may cause an inrush of traffic to origin at the scheduled time and should be used with care.",
+    "tags": ["Cache", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "18b95c43"
+      }
+    }
+  },
+  {
+    "title": "Enable modern web security headers to all responses",
+    "summary": "Go from an F to an A grade on securityheaders.io by adding security policy headers to your responses at the edge.",
+    "tags": ["Response manipulation", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "6db2e9e6",
+        "tokens": ["vcl_deliver"]
+      },
+      "rust": {
+        "fiddleID": "9b683192"
+      },
+      "javascript": {
+        "fiddleID": "3a424a8f"
+      },
+      "go": {
+        "fiddleID": "7bc91e66"
+      }
+    }
+  },
+  {
+    "title": "Configuration version discrepancy detection",
+    "summary": "Detect situations when a shield server might have a different version of your code than the edge server, and avoid errors that this might cause.",
+    "implementations": {
+      "vcl": {
+        "fiddleID": "5b66d641",
+        "tokens": ["req.vcl.version"]
+      }
+    }
+  },
+  {
+    "title": "Add, remove or change HTTP headers",
+    "summary": "Fastly can easily read and write HTTP headers at multiple stages of the request/response cycle.",
+    "tags": ["Request manipulation", "Response manipulation", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "d7e0688c",
+        "tokens": ["set", "unset"]
+      },
+      "rust": {
+        "fiddleID": "289ff165"
+      },
+      "javascript": {
+        "fiddleID": "1cb3ec86"
+      },
+      "go": {
+        "fiddleID": "c07d5609"
+      }
+    }
+  },
+  {
+    "title": "Rewrite URL path",
+    "summary": "Receive a request for one path but request a different path from origin, without a redirect.",
+    "tags": ["Request manipulation", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "3b3abf0a",
+        "tokens": ["req.url"]
+      },
+      "javascript": {
+        "fiddleID": "1d6b5cb5"
+      },
+      "rust": {
+        "fiddleID": "c80592c5"
+      },
+      "go": {
+        "fiddleID": "7599b351"
+      }
+    },
+    "topics": ["seo"]
+  },
+  {
+    "title": "Filter query string parameters",
+    "slug": "manipulate-query-string",
+    "summary": "Add, remove, and sort querystring parameters.",
+    "tags": ["Request manipulation", "Cache", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "5146d116",
+        "tokens": ["querystring.sort", "querystring.globfilter", "querystring.add"]
+      },
+      "rust": {
+        "fiddleID": "e63433f0"
+      },
+      "javascript": {
+        "fiddleID": "7b06fd04",
+        "expressly": true
+      },
+      "go": {
+        "fiddleID": "1c9018f6"
+      }
+    },
+    "topics": ["seo"]
+  },
+  {
+    "title": "Change request method",
+    "summary": "Change PUT, DELETE, OPTIONS and others to POST, or vice versa, to help integrate incompatible client and server apps.",
+    "implementations": {
+      "vcl": {
+        "fiddleID": "dde2db88",
+        "tokens": ["req.method"]
+      },
+      "rust": {
+        "fiddleID": "7ac26a47"
+      },
+      "javascript": {
+        "fiddleID": "1c4cc6bb",
+        "expressly": true
+      },
+      "go": {
+        "fiddleID": "5b4670fb"
+      }
+    },
+    "tags": ["Request manipulation"]
+  },
+  {
+    "title": "Compress content before caching",
+    "slug": "gzip-compression-at-the-edge",
+    "summary": "Compress HTML, SVG, and other compressible formats at the edge and store and serve both compressed and uncompressed versions.",
+    "tags": ["Compression", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "883f7b36",
+        "tokens": ["beresp.gzip", "bereq.http.Accept-Encoding"]
+      }
+    }
+  },
+  {
+    "title": "Client public IP API at the edge",
+    "summary": "Quickly fetch the user's public IP from an API endpoint on your own domain, with no origin.",
+    "tags": ["Response manipulation", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "2dfad19e",
+        "tokens": ["client.ip", "synthetic"]
+      },
+      "rust": {
+        "fiddleID": "ef39d61e"
+      },
+      "javascript": {
+        "fiddleID": "5b18263e"
+      },
+      "go": {
+        "fiddleID": "4ef46d9a"
+      }
+    }
+  },
+  {
+    "title": "Add or remove cookies",
+    "summary": "Read individual cookies, set new cookies in response.",
+    "tags": ["Request manipulation", "Response manipulation", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "e7b0f170"
+      },
+      "rust": {
+        "fiddleID": "c300636e"
+      },
+      "javascript": {
+        "fiddleID": "0e7a85fb",
+        "expressly": true
+      },
+      "go": {
+        "fiddleID": "d659fb2f"
+      }
+    },
+    "topics": ["personalization"],
+    "featured": 1
+  },
+  {
+    "title": "Filter cookies or other structured headers",
+    "summary": "Rewrite headers to keep only keys that you want to allow, similar to `querystring.filter_except` but for headers rather than querystrings.",
+    "tags": ["Request manipulation", "Response manipulation", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "1dde2a90"
+      },
+      "rust": {
+        "fiddleID": "33c7e673"
+      },
+      "javascript": {
+        "fiddleID": "bf860b4a",
+        "expressly": true
+      },
+      "go": {
+        "fiddleID": "90fa71b1"
+      }
+    }
+  },
+  {
+    "title": "Remove trailing slashes to normalize URLs",
+    "tags": ["Request manipulation", "Cache", "Performance"],
+    "summary": "Treat URLs with and without suffixed slashes as equivalent, or redirect URLs with slashes to the version without.",
+    "implementations": {
+      "vcl": {
+        "fiddleID": "ff0db45f"
+      },
+      "rust": {
+        "fiddleID": "01898be0"
+      },
+      "javascript": {
+        "fiddleID": "f55e1e12"
+      },
+      "go": {
+        "fiddleID": "b38b6483"
+      }
+    },
+    "topics": ["seo"]
+  },
+  {
+    "title": "Caching responses to POST requests",
+    "slug": "caching-post-requests",
+    "summary": "By default, Fastly does not cache responses to POST requests. But you can enable this if you wish.",
+    "tags": ["Cache", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "c893d51a"
+      },
+      "rust": {
+        "fiddleID": "28f2cca4"
+      },
+      "go": {
+        "fiddleID": "5a6d9eb5"
+      },
+      "javascript": {
+        "fiddleID": "6ee979f2"
+      }
+    }
+  },
+  {
+    "title": "Regular expression capturing patterns",
+    "summary": "Capture regex pattern groups to use in matching url segments and more.",
+    "implementations": {
+      "vcl": {
+        "fiddleID": "afa4f639"
+      },
+      "rust": {
+        "fiddleID": "19037910"
+      },
+      "go": {
+        "fiddleID": "67493204"
+      },
+      "javascript": {
+        "fiddleID": "6f6c8421"
+      }
+    }
+  },
+  {
+    "title": "Ban bad IPs for a fixed period",
+    "slug": "dictionary-based-ip-block-list",
+    "summary": "Block a list of IP addresses from accessing your service and include an expiry time.",
+    "tags": ["Response manipulation", "Edge data", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "97218171",
+        "tokens": ["table", "table.lookup", "time.is_after"]
+      },
+      "rust": {
+        "fiddleID": "6e0c718e"
+      },
+      "javascript": {
+        "fiddleID": "95f71eb1"
+      },
+      "go": {
+        "fiddleID": "71ed674e"
+      }
+    }
+  },
+  {
+    "title": "ACL based IP block list",
+    "summary": "Block a list of IP address ranges from accessing your service.",
+    "tags": ["Response manipulation", "Edge data", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "fafb88af"
+      }
+    }
+  },
+  {
+    "title": "Apply CAPTCHA to high risk requests",
+    "slug": "captcha-challenge",
+    "summary": "Intercept suspicious traffic and display a CAPTCHA challenge. If the user passes, allow the request to go to the origin server.",
+    "tags": ["Response manipulation", "Request manipulation", "Fetch", "Backends", "Edge data", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "56d25d46"
+      },
+      "rust": {
+        "fiddleID": "b28aa686"
+      },
+      "javascript": {
+        "fiddleID": "39e3c1b6"
+      }
+    },
+    "topics": ["authentication"]
+  },
+  {
+    "title": "Normalize requests to increase cache efficiency",
+    "slug": "normalize-requests",
+    "summary": "Improve cache performance by normalizing requests. Filter and reorder query params, convert to lowercase, filter headers, and more.",
+    "tags": ["Request manipulation", "Cache", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "ecf9fa4a",
+        "tokens": [
+          "querystring.filter_except",
+          "querystring.filtersep",
+          "querystring.sort",
+          "querystring.set",
+          "accept.language_lookup",
+          "accept.charset_lookup",
+          "accept.encoding_lookup",
+          "accept.media_lookup"
+        ]
+      },
+      "rust": {
+        "fiddleID": "ced1eefa"
+      },
+      "javascript": {
+        "fiddleID": "32d2181e"
+      },
+      "go": {
+        "fiddleID": "59b71700"
+      }
+    }
+  },
+  {
+    "title": "Search and replace in strings",
+    "summary": "Use regular expression substitution functions to map paths, strip extraneous slashes, and more.",
+    "implementations": {
+      "vcl": {
+        "fiddleID": "43e7c351",
+        "tokens": ["regsub", "regsuball"]
+      },
+      "rust": {
+        "fiddleID": "858b69d9"
+      },
+      "javascript": {
+        "fiddleID": "9703eeb9"
+      },
+      "go": {
+        "fiddleID": "9bbde6b7"
+      }
+    }
+  },
+  {
+    "title": "Google Cloud Storage origin (public)",
+    "summary": "Use a public GCS bucket as a backend for your Fastly service.",
+    "tags": ["Request manipulation", "Response manipulation", "Edge data", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "1eafe4aa",
+        "tokens": ["req.restarts", "req.url"]
+      },
+      "javascript": {
+        "fiddleID": "e4e8086b"
+      },
+      "rust": {
+        "fiddleID": "21b6ba29"
+      }
+    },
+    "topics": ["static-content"]
+  },
+  {
+    "title": "Google Cloud Storage origin (private)",
+    "summary": "Use AWS compat mode to make authenticated requests to your GCS bucket.",
+    "tags": ["Request manipulation", "Response manipulation", "Edge data", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "cc63f464"
+      },
+      "rust": {
+        "fiddleID": "22333c79"
+      },
+      "javascript": {
+        "fiddleID": "0e8904ea"
+      }
+    },
+    "topics": ["static-content"]
+  },
+  {
+    "title": "Using S3-compatible buckets as private origins",
+    "summary": "Configure S3-compatible buckets to use as private origins for CDN delivery. Requests are authorized via signature version 4 to protect communication between your CDN service and the bucket. This is compatible with Fastly Object Storage, AWS S3, and most other S3-compatible storage offerings.",
+    "tags": ["Request manipulation", "Response manipulation", "Edge data", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "6750ff75",
+        "tokens": ["digest.hash_sha256", "digest.awsv4_hmac", "strftime", "vcl_miss"]
+      },
+      "rust": {
+        "fiddleID": "86632e6b"
+      },
+      "javascript": {
+        "fiddleID": "2733a23e"
+      },
+      "go": {
+        "fiddleID": "469e329a"
+      }
+    },
+    "topics": ["static-content"]
+  },
+  {
+    "title": "Azure blob storage bucket origin (private)",
+    "summary": "Use Microsoft Azure authenticated requests to protect communication between your Fastly service and Azure.",
+    "tags": ["Request manipulation", "Response manipulation", "Edge data", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "9d0aad75",
+        "tokens": ["std.strrep"]
+      },
+      "rust": {
+        "fiddleID": "2ab60010"
+      },
+      "javascript": {
+        "fiddleID": "761c5505"
+      }
+    },
+    "topics": ["static-content"]
+  },
+  {
+    "title": "Alibaba Object Storage Service origin (private)",
+    "slug": "alibaba-oss-private",
+    "summary": "Use authenticated requests to protect communication between your Fastly service and Alibaba's Object Storage Service.",
+    "tags": ["Request manipulation", "Response manipulation", "Edge data", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "6fe773b2"
+      }
+    },
+    "topics": ["static-content"]
+  },
+  {
+    "title": "Log request data to Google BigQuery",
+    "slug": "logging-to-google-bigquery",
+    "summary": "Build raw JSON strings matching your BigQuery table schema to send log data to BigQuery.",
+    "tags": ["Logging", "Observability"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "7ee6d46e"
+      },
+      "rust": {
+        "fiddleID": "a488070c"
+      },
+      "javascript": {
+        "fiddleID": "25041731",
+        "expressly": true
+      },
+      "go": {
+        "fiddleID": "88ecf7d0"
+      }
+    }
+  },
+  {
+    "title": "Support matching on unicode in VCL. すごい！",
+    "slug": "unicode-escaping-in-vcl",
+    "summary": "Represent non-ASCII characters in VCL using unicode escapes.",
+    "implementations": {
+      "vcl": {
+        "fiddleID": "9b39c118"
+      }
+    }
+  },
+  {
+    "title": "Base64 POST body",
+    "summary": "Access the body of a POST request in Base64-encoded form.",
+    "implementations": {
+      "vcl": {
+        "fiddleID": "bffb266e",
+        "tokens": ["req.body.base64"]
+      },
+      "rust": {
+        "fiddleID": "79ef31d8"
+      },
+      "javascript": {
+        "fiddleID": "4533c83d"
+      },
+      "go": {
+        "fiddleID": "a2b5af82"
+      }
+    }
+  },
+  {
+    "title": "Random integers",
+    "summary": "Generate random whole numbers in a range.",
+    "implementations": {
+      "vcl": {
+        "fiddleID": "58a3298d",
+        "tokens": ["randomint"]
+      },
+      "rust": {
+        "fiddleID": "0bb83064"
+      },
+      "javascript": {
+        "fiddleID": "4560008f"
+      },
+      "go": {
+        "fiddleID": "ceb8b65e"
+      }
+    }
+  },
+  {
+    "title": "Extract a substring from a string value",
+    "summary": "Isolate a portion of a string identified by a range of characters.",
+    "implementations": {
+      "vcl": {
+        "fiddleID": "1e095859",
+        "tokens": ["substr"]
+      },
+      "rust": {
+        "fiddleID": "2942f292"
+      },
+      "javascript": {
+        "fiddleID": "f131638b"
+      },
+      "go": {
+        "fiddleID": "170a35a3"
+      }
+    }
+  },
+  {
+    "title": "POST to GET rewrite using a Base64-encoded querystring",
+    "summary": "To allow caching of POST requests, consider rewriting them as GET requests at the edge.",
+    "tags": ["Request manipulation"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "cc94d0e0"
+      },
+      "rust": {
+        "fiddleID": "33cff7cc"
+      },
+      "javascript": {
+        "fiddleID": "e9428a9f"
+      },
+      "go": {
+        "fiddleID": "0fd54292"
+      }
+    }
+  },
+  {
+    "title": "Set PCI flag to disable persistent cache storage",
+    "summary": "PCI-compliant caching requires caching only in volatile storage, which you can enable with beresp.pci in VCL.",
+    "tags": ["Cache", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "9179cfa4",
+        "tokens": ["obj.is_pci", "beresp.pci"]
+      },
+      "rust": {
+        "fiddleID": "7342e748"
+      },
+      "javascript": {
+        "fiddleID": "1db74064"
+      },
+      "go": {
+        "fiddleID": "2b10f84d"
+      }
+    }
+  },
+  {
+    "title": "Set HIPAA flag to disable persistent cache storage",
+    "summary": "HIPAA-compliant caching requires caching only in volatile storage, which you can enable with `beresp.hipaa` in VCL.",
+    "tags": ["Cache", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "b4929fef",
+        "tokens": ["obj.is_hipaa", "beresp.hipaa"]
+      }
+    }
+  },
+  {
+    "title": "Early expiry of cached objects",
+    "summary": "Cached a large number of objects for too long and want to update and shorten their TTLs.",
+    "tags": ["Cache", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "ce1816d6",
+        "tokens": ["req.hash_always_miss", "randombool"]
+      }
+    }
+  },
+  {
+    "title": "Smoke test a new origin",
+    "summary": "Send a copy of your traffic to a test origin before returning a response from production.",
+    "tags": ["Request manipulation", "Backends", "Resilience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "7e4959ca",
+        "tokens": ["req.backend", "restart"]
+      },
+      "rust": {
+        "fiddleID": "1fbc48a6"
+      },
+      "go": {
+        "fiddleID": "48f9408a"
+      },
+      "javascript": {
+        "fiddleID": "185f939c"
+      }
+    }
+  },
+  {
+    "title": "Compute intersection of two lists",
+    "summary": "Useful for comparing capabilities with required permissions.",
+    "implementations": {
+      "vcl": {
+        "fiddleID": "4ddd7b3d",
+        "tokens": ["regsuball", "std.strlen", "std.strstr"]
+      },
+      "rust": {
+        "fiddleID": "1730160c"
+      },
+      "go": {
+        "fiddleID": "a8d5a408"
+      },
+      "javascript": {
+        "fiddleID": "892596b8",
+        "expressly": true
+      }
+    }
+  },
+  {
+    "title": "Prevent hotlinking of product images by third-party websites",
+    "slug": "hot-linking-protection",
+    "summary": "Detect and reject requests from third-party websites that attempt to embed your images on their pages.",
+    "tags": ["Response manipulation", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "fb2cc9fc",
+        "tokens": ["req.http.referer", "std.strstr"]
+      },
+      "rust": {
+        "fiddleID": "0ba14b15"
+      },
+      "javascript": {
+        "fiddleID": "2961d176"
+      },
+      "go": {
+        "fiddleID": "44fec5ba"
+      }
+    }
+  },
+  {
+    "title": "Decompress and read gzipped responses",
+    "summary": "When you need to work on API and text responses from backends that support gzip.",
+    "tags": ["Compression", "Response manipulation", "Developer experience"],
+    "implementations": {
+      "rust": {
+        "fiddleID": "53fb7a6b"
+      },
+      "javascript": {
+        "fiddleID": "859a88bf"
+      },
+      "go": {
+        "fiddleID": "05ce365a"
+      }
+    }
+  },
+  {
+    "title": "Prohibit browser caching",
+    "summary": "Ensure resources are not cached on the front end, while allowing caching within Fastly.",
+    "tags": ["Response manipulation", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "66b4de46"
+      },
+      "rust": {
+        "fiddleID": "7b23f5d3"
+      },
+      "javascript": {
+        "fiddleID": "15f212d1"
+      },
+      "go": {
+        "fiddleID": "9b11a9b0"
+      }
+    }
+  },
+  {
+    "title": "Assemble content at the edge with Edge-side includes (ESI)",
+    "slug": "edge-side-includes-(esi)",
+    "summary": "Use Fastly's support for ESI to combine multiple origin-hosted objects into a single response at the edge.",
+    "tags": ["ESI", "Response manipulation", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "cfccad53",
+        "tokens": ["esi"]
+      },
+      "javascript": {
+        "fiddleID": "2b364970"
+      }
+    },
+    "topics": ["personalization"]
+  },
+  {
+    "title": "Clean backend responses",
+    "summary": "Remove headers added by backends that you don't want to emit to the browser, like amz- or goog- headers.",
+    "tags": ["Response manipulation", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "d994d083",
+        "tokens": ["unset"]
+      },
+      "rust": {
+        "fiddleID": "9fabe437"
+      },
+      "javascript": {
+        "fiddleID": "bd599bdd"
+      },
+      "go": {
+        "fiddleID": "66d8f98c"
+      }
+    }
+  },
+  {
+    "title": "Redirect insecure HTTP to TLS (SSL, HTTPS) in VCL",
+    "slug": "force-tls-ssl-https",
+    "summary": "Redirect any requests that come into a VCL service on insecure HTTP, to the equivalent TLS endpoint (the Compute platform does this automatically).",
+    "tags": ["Response manipulation", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "f27c54ad",
+        "tokens": ["req.protocol"]
+      }
+    }
+  },
+  {
+    "title": "Follow redirects at the edge",
+    "summary": "Protect clients from redirects by chasing them internally at the edge, and then return the eventual non-redirect response.",
+    "tags": ["Fetch", "Response manipulation", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "4eb38392",
+        "tokens": ["req.backend.is_origin"]
+      },
+      "rust": {
+        "fiddleID": "90e0d0fd"
+      },
+      "javascript": {
+        "fiddleID": "79c5e1c2"
+      },
+      "go": {
+        "fiddleID": "d800294f"
+      }
+    },
+    "topics": ["seo"],
+    "featured": 2
+  },
+  {
+    "title": "Cache '429' rate-limiter responses per IP",
+    "summary": "If a backend returns a 429, cache it for the requesting IP but continue to allow other clients to use origin.",
+    "tags": ["Request manipulation", "Response manipulation", "Cache", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "c5aad1df",
+        "tokens": ["req.hash_ignore_busy", "req.hash", "beresp.cacheable"]
+      }
+    },
+    "topics": ["rate-limiting"]
+  },
+  {
+    "title": "Vary based on a cookie",
+    "summary": "Return different objects based on the presence of a cookie.",
+    "tags": ["Request manipulation", "Cache", "Personalization"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "3df6a812"
+      }
+    }
+  },
+  {
+    "title": "Remove querystring from static assets",
+    "summary": "Use the new Sec-Fetch-Dest header or URL patterns to identify assets that should not allow querystrings to be part of the cache key.",
+    "tags": ["Request manipulation", "Cache", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "b01ca6cf",
+        "tokens": ["req.http.Sec-Fetch-Dest", "req.url.path"]
+      },
+      "rust": {
+        "fiddleID": "a55fae8d"
+      },
+      "javascript": {
+        "fiddleID": "2875a417"
+      },
+      "go": {
+        "fiddleID": "cd76bf34"
+      }
+    }
+  },
+  {
+    "title": "Geofence / block access to content by region",
+    "slug": "geofencing-geoblocking-content-by-region",
+    "summary": "Group countries to cache content by custom regions or reject requests from some regions entirely.",
+    "tags": ["Response manipulation", "Geolocation", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "205a5cd1",
+        "tokens": [
+          "fastly.ff.visits_this_service",
+          "client.geo.country_code",
+          "client.geo.continent_code",
+          "client.geo.latitude",
+          "client.geo.longitude",
+          "math.floor",
+          "std.atof"
+        ]
+      },
+      "rust": {
+        "fiddleID": "90ed2aa7"
+      },
+      "javascript": {
+        "fiddleID": "0bdb606f"
+      },
+      "go": {
+        "fiddleID": "2b69ceb5"
+      }
+    },
+    "topics": ["geolocation"]
+  },
+  {
+    "title": "Cache 'near you' content for each area using lat/long grid",
+    "slug": "ultra-local-proximity-cache-using-lat-long-grid",
+    "summary": "Bucket users into small grid squares to allow for hyper-local content caching (e.g., \"stores near you\", \"local offers\").",
+    "tags": ["Geolocation", "Cache", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "40431224"
+      },
+      "javascript": {
+        "fiddleID": "083440d4"
+      },
+      "rust": {
+        "fiddleID": "6d1fb28f"
+      },
+      "go": {
+        "fiddleID": "6f83930e"
+      }
+    },
+    "topics": ["geolocation"]
+  },
+  {
+    "title": "Set Google Analytics _ga cookie",
+    "summary": "Due to ITP 2.1 restrictions, cookies set in JavaScript may be limited to a 7-day TTL. Set your Google Analytics cookie on the edge to avoid this.",
+    "tags": ["Response manipulation", "Edge data", "SEO"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "52a1d545",
+        "tokens": ["randomint", "now.sec"]
+      },
+      "rust": {
+        "fiddleID": "afd2bc24"
+      },
+      "javascript": {
+        "fiddleID": "123ceec2",
+        "expressly": true
+      },
+      "go": {
+        "fiddleID": "b616a026"
+      }
+    },
+    "topics": ["seo"]
+  },
+  {
+    "title": "Auto retry a secondary backend",
+    "slug": "failover-to-a-secondary-backend",
+    "summary": "If primary backend fails, retry with a different backend without caching the failure or reducing cache efficiency.",
+    "tags": ["Request manipulation", "Backends", "Resilience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "03bb096b",
+        "tokens": ["req.backend", "beresp.cacheable", "req.backend.is_origin"]
+      },
+      "rust": {
+        "fiddleID": "56627cc4"
+      },
+      "javascript": {
+        "fiddleID": "bd6d190f"
+      },
+      "go": {
+        "fiddleID": "10a8719c"
+      }
+    }
+  },
+  {
+    "title": "Retry image-optimization requests on origin failure",
+    "slug": "io-failover-retry",
+    "summary": "If primary backend fails, requests with IO enabled require some special handling.",
+    "tags": ["Request manipulation", "Backends", "Resilience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "cd724b3d"
+      }
+    }
+  },
+  {
+    "title": "Comprehensive logging",
+    "summary": "Fastly offers a myriad of different variables that you can log. See and test a large collection here.",
+    "tags": ["Logging", "Observability"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "a07e56ef",
+        "tokens": [
+          "client.geo.ip_override",
+          "req.method",
+          "time.elapsed.usec",
+          "beresp.do_stream",
+          "beresp.backend.ip",
+          "beresp.backend.port",
+          "beresp.backend.name",
+          "beresp.status",
+          "bereq.method",
+          "bereq.url",
+          "server.datacenter",
+          "fastly_info.state",
+          "std.atof",
+          "time.to_first_byte",
+          "math.NAN",
+          "client.socket.congestion_algorithm",
+          "strftime",
+          "time.start.usec_frac",
+          "client.as.number",
+          "client.socket.tcpi_delivery_rate",
+          "json.escape",
+          "client.socket.ploss",
+          "client.socket.tcpi_delta_retrans",
+          "log"
+        ]
+      }
+    }
+  },
+  {
+    "title": "Enable features gradually",
+    "summary": "Avoid a huge inrush of traffic to origin caused by gradually applying changes that affect the cache key, like segmented caching, over hours or days.",
+    "tags": ["Request manipulation", "Cache", "Edge data", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "9571e786",
+        "tokens": ["fastly.hash", "req.enable_segmented_caching"]
+      }
+    }
+  },
+  {
+    "title": "Create image transform presets",
+    "slug": "image-transformation-classes",
+    "summary": "Use custom, predefined classnames like large, medium, small, teaser, thumb, or article to control Fastly Image Optimizer and optionally prevent end-user access to native properties like 'width'.",
+    "tags": ["Image opto", "Response manipulation", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "0321670a",
+        "tokens": ["req.url.ext", "fastly.ff.visits_this_service", "querystring.filter_except", "querystring.filter"]
+      }
+    },
+    "topics": ["seo", "personalization"]
+  },
+  {
+    "title": "Create montage poster frame images",
+    "slug": "image-montage-grid",
+    "summary": "Combine multiple source images into a single image and then optimize and serve the result.",
+    "tags": ["Image opto", "Response manipulation", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "147ee54b",
+        "tokens": ["req.http.X-Fastly-Imageopto-Api"]
+      }
+    },
+    "topics": ["personalization"]
+  },
+  {
+    "title": "Anonymize client IPs for logging",
+    "slug": "anonymize-client-ip-for-logging",
+    "summary": "Strip the last octet or compute a hash of client IP address for anonymization.",
+    "tags": ["Logging", "Observability"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "6812d176"
+      },
+      "rust": {
+        "fiddleID": "41731fb5"
+      },
+      "javascript": {
+        "fiddleID": "7fa93887"
+      },
+      "go": {
+        "fiddleID": "b6757152"
+      }
+    },
+    "featured": 3
+  },
+  {
+    "title": "Log the IP version (IPv4/IPv6)",
+    "summary": "Identify which type of IP address was used by the client connecting to your Fastly service.",
+    "tags": ["Logging", "Observability"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "d3ba1cf6",
+        "tokens": ["addr.is_ipv4", "addr.is_ipv6", "req.http.Fastly-Client-IP", "if"]
+      },
+      "rust": {
+        "fiddleID": "1c52e045"
+      },
+      "go": {
+        "fiddleID": "b0759aa4"
+      },
+      "javascript": {
+        "fiddleID": "8fdccddc"
+      }
+    }
+  },
+  {
+    "title": "Send HTTP Basic Auth in request to origin",
+    "summary": "Convert a password sent by the client in the querystring into a Authorization header to your origin server.",
+    "tags": ["Request manipulation", "Edge data", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "913d3410",
+        "tokens": ["querystring.filter", "digest.base64", "req.http.Fastly-Client-IP", "subfield"]
+      },
+      "rust": {
+        "fiddleID": "a1c3333f"
+      },
+      "javascript": {
+        "fiddleID": "8d2cef4a"
+      },
+      "go": {
+        "fiddleID": "bf22464a"
+      }
+    },
+    "topics": ["authentication"]
+  },
+  {
+    "title": "Cache POST/GraphQL query responses",
+    "slug": "cache-graphql-query-response",
+    "summary": "GraphQL query requests are POSTs, but responses to POST typically can't be cached. Convert it to a querystring on a GET request to allow Fastly to cache GraphQL (or any HTTP POST) request.",
+    "tags": ["Request manipulation", "Cache"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "aac38a79",
+        "tokens": ["digest.base64"]
+      },
+      "rust": {
+        "fiddleID": "0620802d"
+      },
+      "javascript": {
+        "fiddleID": "94abc13a"
+      },
+      "go": {
+        "fiddleID": "dddeeb0c"
+      }
+    }
+  },
+  {
+    "title": "Base64 URL path segments",
+    "summary": "Unknown data in URL paths can result in invalid URLs, but base64url is designed to be URL-safe.",
+    "tags": ["Request manipulation"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "e8af3d73",
+        "tokens": ["digest.base64url_decode", "digest.base64url_nopad"]
+      },
+      "rust": {
+        "fiddleID": "352a4c25"
+      },
+      "javascript": {
+        "fiddleID": "5337679a"
+      },
+      "go": {
+        "fiddleID": "e0a00497"
+      }
+    }
+  },
+  {
+    "title": "Check validity of inputs using a non-crypto hash",
+    "summary": "Block or identify syntactically invalid requests at the edge by using a hash function of your choice.",
+    "tags": ["Request manipulation", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "a6d4be2d",
+        "tokens": ["digest.hash_md5", "digest.digest.hash_crc32b", "digest.hash_sha1", "digest.hash_crc32", "substr"]
+      },
+      "rust": {
+        "fiddleID": "84b919bb"
+      },
+      "javascript": {
+        "fiddleID": "39ad6ddd"
+      }
+    }
+  },
+  {
+    "title": "Authenticate JSON Web Tokens at the edge",
+    "slug": "json-web-tokens",
+    "summary": "Decode the popular JWT format to verify user session tokens before forwarding trusted authentication data to your origin.",
+    "tags": ["Request manipulation", "Edge data", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "c2bcd4b9",
+        "tokens": [
+          "digest.hmac_sha256_base64",
+          "digest.hmac_sha512_base64",
+          "digest.rsa_verify",
+          "time.is_after",
+          "std.integer2time",
+          "std.prefixof"
+        ]
+      },
+      "rust": {
+        "fiddleID": "b2766c67"
+      },
+      "javascript": {
+        "fiddleID": "25e41c0a"
+      },
+      "go": {
+        "fiddleID": "1950e580"
+      }
+    },
+    "topics": ["authentication"]
+  },
+  {
+    "title": "Use A/B testing to personalize responses",
+    "slug": "ab-testing",
+    "summary": "Serve different responses to separate user cohorts.",
+    "tags": ["Request manipulation", "Response manipulation", "Edge data", "Cache", "Personalization"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "bb1c1a6e",
+        "tokens": ["randomint_seeded", "std.strtol", "uuid.version4"]
+      },
+      "rust": {
+        "fiddleID": "86002def"
+      },
+      "javascript": {
+        "fiddleID": "113f027e"
+      }
+    },
+    "topics": ["personalization"]
+  },
+  {
+    "title": "Redirect old URLs at the edge",
+    "summary": "Use a dictionary of URL mappings to serve your redirects at lightning speed.",
+    "tags": ["Response manipulation", "Edge data", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "4a28d884",
+        "tokens": ["table.contains", "table.lookup", "table", "req.url.path"]
+      },
+      "rust": {
+        "fiddleID": "517b69e7"
+      },
+      "javascript": {
+        "fiddleID": "aeb669ec",
+        "expressly": true
+      },
+      "go": {
+        "fiddleID": "ac4768d0"
+      }
+    },
+    "topics": ["seo"]
+  },
+  {
+    "title": "Flatten the curve of major traffic spikes with a waiting room",
+    "slug": "waiting-room",
+    "summary": "A totally stateless solution to hold back new users for a minimum waiting period to smooth out spikes in traffic.",
+    "tags": ["Request manipulation", "Response manipulation", "Edge data", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "7e14bed4",
+        "tokens": ["digest.hmac_sha512", "randombool_seeded"]
+      },
+      "rust": {
+        "fiddleID": "0a6055f7"
+      }
+    },
+    "topics": ["rate-limiting"]
+  },
+  {
+    "title": "Add time zone offset to requests",
+    "summary": "Divide the world into time bands of custom size and forward time zone data to your origin server.",
+    "tags": ["Request manipulation", "Personalization"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "87b970b8",
+        "tokens": ["math.round", "client.geo.utc_offset", "client.geo.gmt_offset"]
+      },
+      "rust": {
+        "fiddleID": "5df23f54"
+      },
+      "javascript": {
+        "fiddleID": "bc71c8d0",
+        "expressly": true
+      },
+      "go": {
+        "fiddleID": "4a5f9116"
+      }
+    },
+    "topics": ["geolocation"]
+  },
+  {
+    "title": "Format time expressions",
+    "slug": "time-formatting",
+    "tags": ["Developer experience"],
+    "summary": "Format dates and times in a variety of ways.",
+    "implementations": {
+      "vcl": {
+        "fiddleID": "70538937",
+        "tokens": ["strftime", "std.time", "std.integer2time"]
+      },
+      "rust": {
+        "fiddleID": "02234136"
+      },
+      "javascript": {
+        "fiddleID": "ee36ccc9",
+        "expressly": true
+      },
+      "go": {
+        "fiddleID": "06059348"
+      }
+    }
+  },
+  {
+    "title": "Perform redirects with wildcard patterns using a dictionary",
+    "summary": "Match URL prefixes and make use of configurable response status and querystring preservation.",
+    "tags": ["Response manipulation", "Edge data", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "4824b686",
+        "tokens": []
+      },
+      "rust": {
+        "fiddleID": "0ed9f358"
+      },
+      "javascript": {
+        "fiddleID": "132cbc86",
+        "expressly": true
+      }
+    },
+    "topics": ["seo"]
+  },
+  {
+    "title": "Throttling per country over configurable time periods",
+    "summary": "Adjust the maximum TCP socket pacing for connections at peak times of day in busy regions.",
+    "tags": ["Response manipulation", "Edge data", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "9f6f1d6f",
+        "tokens": ["client.requests", "client.socket.pace"]
+      },
+      "javascript": {
+        "fiddleID": "6989fa1c"
+      }
+    },
+    "topics": ["geolocation", "rate-limiting"]
+  },
+  {
+    "title": "CenturyLink-compatible token validation",
+    "summary": "Validate your CenturyLink tokens for access to video stream playlists.",
+    "tags": ["Request manipulation", "Edge data", "Security"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "8edeea3c",
+        "tokens": ["querystring.remove"]
+      },
+      "rust": {
+        "fiddleID": "c4e97afa"
+      },
+      "javascript": {
+        "fiddleID": "cd09bcd9"
+      }
+    },
+    "topics": ["authentication"]
+  },
+  {
+    "title": "Asynchronous origin requests with an ordered response",
+    "slug": "async-requests-ordered-output",
+    "summary": "Process multiple requests in any order and still generates the same output every time. This example uses an external API to retrieve the names of 10 Star Wars characters, the logs show how the requests run in a different order every time while the output never changes (provided no request fails).",
+    "tags": ["Fetch", "Performance"],
+    "implementations": {
+      "rust": {
+        "fiddleID": "afc04a2b"
+      },
+      "go": {
+        "fiddleID": "3857faa1"
+      },
+      "javascript": {
+        "fiddleID": "a4713804"
+      }
+    }
+  },
+  {
+    "title": "Perform multiple origin requests asynchronously",
+    "slug": "async-requests",
+    "summary": "Handle third-party requests as they are resolved.",
+    "tags": ["Fetch", "Performance"],
+    "implementations": {
+      "rust": {
+        "fiddleID": "7eefafd4"
+      },
+      "javascript": {
+        "fiddleID": "2a4286c0"
+      },
+      "go": {
+        "fiddleID": "34003bd2"
+      }
+    }
+  },
+  {
+    "title": "Slowing down responses (tarpit)",
+    "summary": "Force a response to be delivered very slowly to reduce the rate at which an attacker can send requests.",
+    "tags": ["Response manipulation", "Security"],
+    "implementations": {
+      "rust": {
+        "fiddleID": "5b3bb239"
+      },
+      "javascript": {
+        "fiddleID": "ecf35101"
+      },
+      "vcl": {
+        "fiddleID": "f0f7bacc",
+        "tokens": ["resp.tarpit"]
+      }
+    },
+    "topics": ["rate-limiting"]
+  },
+  {
+    "title": "Support for Edge-Control header",
+    "summary": "Use custom edge code to implement support for the proprietary Edge-Control cache directive.",
+    "tags": ["Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "c57a6a79",
+        "tokens": ["parse_time_delta"]
+      }
+    }
+  },
+  {
+    "title": "Enrich image responses with EXIF metadata",
+    "summary": "Use the `exif` Rust crate to decorate a backend response with image metadata.",
+    "tags": ["Edge data", "Response manipulation"],
+    "implementations": {
+      "rust": {
+        "fiddleID": "c408ebab"
+      },
+      "javascript": {
+        "fiddleID": "18a7e610"
+      },
+      "go": {
+        "fiddleID": "decb154a"
+      }
+    },
+    "topics": ["seo"]
+  },
+  {
+    "title": "Generate a QR code",
+    "summary": "Use open source libraries to dynamically serve a QR code based on query parameters.",
+    "tags": [],
+    "implementations": {
+      "rust": {
+        "fiddleID": "0528870d"
+      },
+      "javascript": {
+        "fiddleID": "2061b810"
+      },
+      "go": {
+        "fiddleID": "c8519e8e"
+      }
+    }
+  },
+  {
+    "title": "Use dynamic backends to follow redirects",
+    "summary": "Create a dynamic backend from the redirect response, and then get a response from the dynamic backend.",
+    "tags": ["Fetch", "Response manipulation", "Developer experience", "Dynamic backend"],
+    "implementations": {
+      "rust": {
+        "fiddleID": "2c75496d"
+      },
+      "javascript": {
+        "fiddleID": "f01e8734"
+      },
+      "go": {
+        "fiddleID": "7d1c16df"
+      }
+    },
+    "topics": ["seo"]
+  },
+  {
+    "title": "Bot detection using ratecounter",
+    "summary": "Rate counters are normally used for detecting high volume DoS-style attacks, but you can also use them to measure lower rates, to ensure that navigation between pages is happening at human speed.",
+    "tags": ["Response manipulation"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "880b1a88",
+        "tokens": ["ratelimit.ratecounter_increment", "ratecounter"]
+      }
+    },
+    "topics": ["rate-limiting"]
+  },
+  {
+    "title": "Rate limit requests",
+    "summary": "Use ratecounters and penalty boxes to stop high-volume automated attacks against your website.",
+    "tags": ["Response manipulation"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "6a4424a1",
+        "tokens": ["ratelimit.check_rates", "ratecounter", "penaltybox"]
+      }
+    },
+    "topics": ["rate-limiting"]
+  },
+  {
+    "title": "Validate domain on query string",
+    "summary": "Check the query string if it contains a valid domain. ",
+    "tags": [],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "6d931f84",
+        "tokens": ["urldecode", "re.group"]
+      },
+      "rust": {
+        "fiddleID": "26f7d9f9"
+      },
+      "go": {
+        "fiddleID": "86324875"
+      },
+      "javascript": {
+        "fiddleID": "73293c32",
+        "expressly": true
+      }
+    }
+  },
+  {
+    "title": "Backend health status API",
+    "summary": "Create an HTTP API for real time backend health status",
+    "tags": ["Observability", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "f8b812f6",
+        "tokens": []
+      },
+      "rust": {
+        "fiddleID": "bb268e85"
+      },
+      "javascript": {
+        "fiddleID": "4654f16f"
+      }
+    }
+  },
+  {
+    "title": "Check for viruses using Virus Total",
+    "summary": "Sha256 hash a file upload and test the hash against the VirusTotal API",
+    "implementations": {
+      "javascript": {
+        "fiddleID": "1e740de4",
+        "tokens": []
+      }
+    }
+  },
+  {
+    "title": "Protect PNGs for Acropalypse",
+    "summary": "Remove extraneous data from PNG files created using screenshotting tools",
+    "tags": ["Response manipulation"],
+    "implementations": {
+      "rust": {
+        "fiddleID": "36dcbb47"
+      },
+      "javascript": {
+        "fiddleID": "8cce0ff5"
+      }
+    }
+  },
+  {
+    "title": "Transform a response while streaming it",
+    "summary": "Streaming transformations avoid buffering a response, reducing latency and memory consumption",
+    "tags": ["Response manipulation"],
+    "implementations": {
+      "rust": {
+        "fiddleID": "8966cda1"
+      },
+      "javascript": {
+        "fiddleID": "b5a0ac72"
+      }
+    },
+    "topics": ["seo"]
+  },
+  {
+    "title": "Set a timeout on a Request",
+    "summary": "Configure a timeout for a specific origin request, rather than relying on the configuration settings for that origin",
+    "tags": ["Performance", "Response manipulation"],
+    "implementations": {
+      "javascript": {
+        "fiddleID": "0f9ab0fc"
+      },
+      "go": {
+        "fiddleID": "f5512c3c"
+      },
+      "rust": {
+        "fiddleID": "2f7fdf33"
+      }
+    }
+  },
+  {
+    "title": "Conduct security chaos experiments in requests",
+    "summary": "Strips cookies and forces cross-site origin headers in requests to verify security controls and logging are working as expected.",
+    "tags": ["Security", "Request Manipulation", "Resilience"],
+    "implementations": {
+      "javascript": {
+        "fiddleID": "17d4d15b"
+      }
+    }
+  },
+  {
+    "title": "Block bad user-agents",
+    "summary": "Check for known bad bots and crawlers and deny traffic.",
+    "tags": ["Security", "Regex", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "84be58c2",
+        "tokens": ["req.http.User-Agent"]
+      },
+      "rust": {
+        "fiddleID": "b7ff9af1"
+      },
+      "javascript": {
+        "fiddleID": "89cc95a2"
+      },
+      "go": {
+        "fiddleID": "043a8efe"
+      }
+    }
+  },
+  {
+    "title": "Rewrite url based on the subdomain",
+    "summary": "Check for a subdomain and rewrite the URL path.",
+    "tags": ["Regex", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "fc1b13e9",
+        "tokens": ["req.url", "req.http.host"]
+      },
+      "rust": {
+        "fiddleID": "146bd3e7"
+      },
+      "javascript": {
+        "fiddleID": "e0a02cfb"
+      },
+      "go": {
+        "fiddleID": "0a26b9fd"
+      }
+    }
+  },
+  {
+    "title": "Deny access to certain file types",
+    "summary": "Check for specific URL extensions and deny access with a 403.",
+    "tags": ["Regex", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "16b68510",
+        "tokens": ["req.url.ext"]
+      },
+      "rust": {
+        "fiddleID": "41999712"
+      },
+      "javascript": {
+        "fiddleID": "40e230d1"
+      },
+      "go": {
+        "fiddleID": "27e189ca"
+      }
+    }
+  },
+  {
+    "title": "Block all traffic from certain countries",
+    "summary": "Check for a country code on an incoming request, and if it's present, deny access with a 403.",
+    "tags": ["Regex", "Security", "Geolocation", "Developer experience"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "3e5f06ff",
+        "tokens": ["client.geo.country_code"]
+      },
+      "rust": {
+        "fiddleID": "91041cea"
+      },
+      "javascript": {
+        "fiddleID": "06e7ee1c"
+      },
+      "go": {
+        "fiddleID": "f53558be"
+      }
+    }
+  },
+  {
+    "title": "Prevent race conditions with purge-all and shielding",
+    "summary": "If edge and shield POPs are purged in the wrong order, stale content may get re-cached. You can prevent that.",
+    "tags": ["Cache", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "6deeb323",
+        "tokens": ["req.vcl.generation"]
+      }
+    }
+  },
+  {
+    "title": "Use surrogate key purges for purge-all and single URL purge",
+    "summary": "Surrogate key purges are fast and flexible and can be used in place of single URL purge and purge-all.",
+    "tags": ["Cache", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "a266cf05"
+      },
+      "rust": {
+        "fiddleID": "385c90c8"
+      },
+      "javascript": {
+        "fiddleID": "1c62126a"
+      },
+      "go": {
+        "fiddleID": "8862d7de"
+      }
+    }
+  },
+  {
+    "title": "Use regionally distributed origin servers",
+    "summary": "If you have multiple hosting locations, Fastly can route traffic to the closest one.",
+    "tags": ["Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "9cc26e97"
+      },
+      "rust": {
+        "fiddleID": "2f9e6de9"
+      },
+      "javascript": {
+        "fiddleID": "091c4efb"
+      },
+      "go": {
+        "fiddleID": "d19556d3"
+      }
+    }
+  },
+  {
+    "title": "Pass all requests",
+    "summary": "Disable edge caching and skip the Fastly readthrough cache for every request, ensuring nothing is cached at the edge.",
+    "tags": ["Performance", "Cache"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "849672db"
+      },
+      "rust": {
+        "fiddleID": "a190fac9"
+      },
+      "javascript": {
+        "fiddleID": "365d887d"
+      },
+      "go": {
+        "fiddleID": "45134622"
+      }
+    }
+  },
+  {
+    "title": "Read environment variables",
+    "summary": "Read values from Fastly-defined env vars in Compute programs.",
+    "tags": ["Developer experience"],
+    "implementations": {
+      "rust": {
+        "fiddleID": "c144b9e0"
+      },
+      "javascript": {
+        "fiddleID": "79322415"
+      },
+      "go": {
+        "fiddleID": "f6b5ab25"
+      }
+    }
+  },
+  {
+    "title": "Register a dynamic backend",
+    "summary": "Backends can be defined at runtime in compute applications to make requests to any host on the internet.",
+    "tags": ["Developer experience"],
+    "implementations": {
+      "rust": {
+        "fiddleID": "8fa133d6"
+      },
+      "javascript": {
+        "fiddleID": "b784bc22"
+      },
+      "go": {
+        "fiddleID": "d06e9e9a"
+      }
+    }
+  },
+  {
+    "title": "Calculate the distance between two points on Earth",
+    "summary": "Calculate the physical geo distance in kilometers between places such as the end user's location and the Fastly POP they connected to.",
+    "tags": ["Geolocation"],
+    "implementations": {
+      "rust": {
+        "fiddleID": "b933cf8f"
+      },
+      "javascript": {
+        "fiddleID": "2f262874"
+      },
+      "go": {
+        "fiddleID": "f298c39b"
+      }
+    }
+  },
+  {
+    "title": "Overriding caching defaults based on a backend response",
+    "slug": "overriding-caching-defaults-based-on-a-backend-response",
+    "summary": "Conditionally apply a 5 minute caching limit based on a 404 backend response.",
+    "tags": ["Cache", "Performance"],
+    "implementations": {
+      "vcl": {
+        "fiddleID": "8f46ddac"
+      }
+    }
+  }
+]

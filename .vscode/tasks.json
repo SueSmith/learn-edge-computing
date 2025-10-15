@@ -1,26 +1,929 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "type": "shell",
-            "label": "🪩 JavaScript starter",
-            "command": "bash helpers/test.sh https://github.com/fastly/compute-starter-kit-javascript-default",
-            "detail": "A simple starter kit to learn Compute with JS",
-            "problemMatcher": []
-        },
-        {
-            "type": "shell",
-            "label": "🌎 Expressly starter",
-            "command": "bash helpers/welcome.sh",
-            "detail": "Use express style routing in your Compute app",
-            "problemMatcher": []
-        },
-        {
-            "type": "shell",
-            "label": "🛼 Fanout starter",
-            "command": "bash helpers/welcome.sh",
-            "detail": "Do something super cool with Fanout",
-            "problemMatcher": []
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "🔔 Purge everything under a URL path prefix",
+      "detail": "Use surrogate keys to link all objects under each path prefix, allowing wildcard purging of all URLs that share a common prefix.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🏟️ Verify if a web crawler accessing your server really is Googlebot",
+      "detail": "An implementation of Google's recommended mechanism for verifying googlebot",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🏰 Mutual TLS to origin",
+      "detail": "Store your client certificate in a Fastly secret store to enable mTLS on backend requests.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "💽 Add a new field to a JSON response",
+      "detail": "Decorate API responses in JSON format with new fields.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "☂️ Populate template placeholders in streaming responses",
+      "detail": "Use a transform stream to search the body of a response and replace simple template placeholders with content generated at the edge, without buffering.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "📫 Use a templating library at the edge",
+      "detail": "Generate an invoice at the edge by rendering an HTML template with the full power of a popular template engine.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🛒 Geo-IP API at the edge",
+      "detail": "Create an API endpoint for fetching geolocation data for the requesting browser, implemented 100% at the edge. The response should show your current approximate location, but no requests to any origin servers.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "⛓️ Tag requests with geolocation data",
+      "detail": "Add geolocation data about the client browser as extra headers in any requests from Fastly to your origin.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "❄️ Apply feature flags from an origin API",
+      "detail": "Park request, make a different request first, use the response to annotate the real origin request (or make decisions about how to route it).",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🛖 Enforce a paywall using an origin API",
+      "detail": "Use a custom Paywall header to trigger preflight requests to authenticate every article view with a backend paywall service.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🌆 Detect leaked passwords",
+      "detail": "Detect requests that contain submitted passwords and use a service to determine whether the password has leaked before allowing the request to proceed to origin (data from haveibeenpwned).",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🔬 Convert timestamps to relative times like '2 hours ago'",
+      "detail": "Generate relative time datelines at the Edge instead of in the browser or at origin. Better caching, faster rendering, fewer reflows.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🏢 Add www. to apex hostname and subdomains",
+      "detail": "Detect requests that don't include a www. prefix, and redirect to the equivalent path on a hostname that starts with www., usually to make sure there's only one canonical location for your content.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🛻 Serve stale to search crawlers for better ranking",
+      "detail": "Prioritize human traffic over search crawlers by serving stale content to crawlers.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🥾 Support caching of OPTIONS requests",
+      "detail": "Normally OPTIONS requests aren't cacheable. Allow caching of OPTIONS by converting the request to a GET and back to OPTIONS if it's a cache miss.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🏚️ Override TTLs based on content type",
+      "detail": "Set TTLs at the edge based on the type of resource. Better done at origin, but this can be a great 'quick fix' or a solution if you don't control the origin.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "📢 Override TTLs for path prefixes",
+      "detail": "Set TTLs at the edge based on looking up a path prefix in a dictionary.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🌫️ Push prices or breaking news in real time with Server-Sent-Events",
+      "detail": "Stream responses to the browser while still receiving data from the origin and also saving it to cache. Great for spreading out server-sent-events streams to millions of users from a single source stream.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🏑 Map IPv6 addresses to IPv4 address space",
+      "detail": "Create an identifier that looks like an IPv4 address if the user has made their request using IPv6. Useful for origin servers that require an IPv4 address for some reason.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🕹️ Capture and aggregate log data from client devices",
+      "detail": "Collect and aggregate log data submitted from browsers directly into S3 or another log store without having to handle the traffic at your origin.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🏥 Use microservices to divide up a domain",
+      "detail": "Send request to different origin servers based on the URL path.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🏯 Replace origin errors with 'safe' responses",
+      "detail": "Detect specified response statuses from backends and instead serve a precomposed error page or error content generated at the edge.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🔌 Answer CORS OPTIONS preflight requests at the edge",
+      "detail": "Browsers send OPTIONS requests before performing cross-origin POSTs. You can answer these requests directly from the edge.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🪙 Apply HTTP basic auth to private endpoints",
+      "detail": "Store username/password list in a dictionary, authorize user at the edge, reject requests that don't have correct credentials.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "💎 Serve robots.txt from the edge",
+      "detail": "Serve full text of robots.txt as a synthetic response to avoid requests hitting your origin.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🚉 Serve stale content from cache while origins are offline",
+      "detail": "Deal with all potential scenarios for using stale content to satisfy requests when origin is unhealthy or misbehaving.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🚒 Load balance randomly across multiple backends",
+      "detail": "Load balance requests randomly across multiple backends, dropping them automatically if they become unhealthy.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "📨 Load balance to optimise upstream caching with hash directors",
+      "detail": "Map requests to backends consistently, which can be useful to improve your internal cache and replication efficiency.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🎳 Cycle through backends until a healthy server is found",
+      "detail": "Try backends in turn until one is healthy (also known as an 'active-standby' strategy).",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🧭 Sticky sessions using client directors",
+      "detail": "Map requests to backends based on user ID (a.k.a., \"sticky sessions\").",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🧰 Log the data you need for actionable insights",
+      "detail": "Emit logging data to your chosen log endpoint from any VCL stage, not just vcl_log.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🌞 Serve small binary assets direct from edge",
+      "detail": "Serve binary objects, such as images, directly from edge configuration.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🛡️ Create self-destructing URLs for time-limited access",
+      "detail": "Make URLs expire after a configurable period.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "⚒️ Transform and optimize images on the fly",
+      "detail": "Use Fastly Image Optimizer to transform and serve images at the edge, closer to your users.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🌇 Use content-type of response to trigger image optimization",
+      "detail": "Typically requests are flagged for IO before they are sent to a backend, but using a restart in VCL, you can inspect a response before deciding whether to optimize it.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🚑 Schedule a cache invalidation at a predefined time",
+      "detail": "Purge your edge cache automatically at a certain time. This may cause an inrush of traffic to origin at the scheduled time and should be used with care.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🪄 Enable modern web security headers to all responses",
+      "detail": "Go from an F to an A grade on securityheaders.io by adding security policy headers to your responses at the edge.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🌌 Configuration version discrepancy detection",
+      "detail": "Detect situations when a shield server might have a different version of your code than the edge server, and avoid errors that this might cause.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🌃 Add, remove or change HTTP headers",
+      "detail": "Fastly can easily read and write HTTP headers at multiple stages of the request/response cycle.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🦼 Rewrite URL path",
+      "detail": "Receive a request for one path but request a different path from origin, without a redirect.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🙉 Filter query string parameters",
+      "detail": "Add, remove, and sort querystring parameters.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "⌚ Change request method",
+      "detail": "Change PUT, DELETE, OPTIONS and others to POST, or vice versa, to help integrate incompatible client and server apps.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🚞 Compress content before caching",
+      "detail": "Compress HTML, SVG, and other compressible formats at the edge and store and serve both compressed and uncompressed versions.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🚧 Client public IP API at the edge",
+      "detail": "Quickly fetch the user's public IP from an API endpoint on your own domain, with no origin.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🎾 Add or remove cookies",
+      "detail": "Read individual cookies, set new cookies in response.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "👻 Filter cookies or other structured headers",
+      "detail": "Rewrite headers to keep only keys that you want to allow, similar to `querystring.filter_except` but for headers rather than querystrings.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🌪️ Remove trailing slashes to normalize URLs",
+      "detail": "Treat URLs with and without suffixed slashes as equivalent, or redirect URLs with slashes to the version without.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🏦 Caching responses to POST requests",
+      "detail": "By default, Fastly does not cache responses to POST requests. But you can enable this if you wish.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "📜 Regular expression capturing patterns",
+      "detail": "Capture regex pattern groups to use in matching url segments and more.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "✉️ Ban bad IPs for a fixed period",
+      "detail": "Block a list of IP addresses from accessing your service and include an expiry time.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🛣️ ACL based IP block list",
+      "detail": "Block a list of IP address ranges from accessing your service.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🪛 Apply CAPTCHA to high risk requests",
+      "detail": "Intercept suspicious traffic and display a CAPTCHA challenge. If the user passes, allow the request to go to the origin server.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🥿 Normalize requests to increase cache efficiency",
+      "detail": "Improve cache performance by normalizing requests. Filter and reorder query params, convert to lowercase, filter headers, and more.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🪀 Search and replace in strings",
+      "detail": "Use regular expression substitution functions to map paths, strip extraneous slashes, and more.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🪖 Google Cloud Storage origin (public)",
+      "detail": "Use a public GCS bucket as a backend for your Fastly service.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🎇 Google Cloud Storage origin (private)",
+      "detail": "Use AWS compat mode to make authenticated requests to your GCS bucket.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "💦 Using S3-compatible buckets as private origins",
+      "detail": "Configure S3-compatible buckets to use as private origins for CDN delivery. Requests are authorized via signature version 4 to protect communication between your CDN service and the bucket. This is compatible with Fastly Object Storage, AWS S3, and most other S3-compatible storage offerings.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🎢 Azure blob storage bucket origin (private)",
+      "detail": "Use Microsoft Azure authenticated requests to protect communication between your Fastly service and Azure.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "👾 Alibaba Object Storage Service origin (private)",
+      "detail": "Use authenticated requests to protect communication between your Fastly service and Alibaba's Object Storage Service.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🎠 Log request data to Google BigQuery",
+      "detail": "Build raw JSON strings matching your BigQuery table schema to send log data to BigQuery.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "📽️ Support matching on unicode in VCL. すごい！",
+      "detail": "Represent non-ASCII characters in VCL using unicode escapes.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🥍 Base64 POST body",
+      "detail": "Access the body of a POST request in Base64-encoded form.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "💨 Random integers",
+      "detail": "Generate random whole numbers in a range.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🧠 Extract a substring from a string value",
+      "detail": "Isolate a portion of a string identified by a range of characters.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "📦 POST to GET rewrite using a Base64-encoded querystring",
+      "detail": "To allow caching of POST requests, consider rewriting them as GET requests at the edge.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🧧 Set PCI flag to disable persistent cache storage",
+      "detail": "PCI-compliant caching requires caching only in volatile storage, which you can enable with beresp.pci in VCL.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🪩 Set HIPAA flag to disable persistent cache storage",
+      "detail": "HIPAA-compliant caching requires caching only in volatile storage, which you can enable with `beresp.hipaa` in VCL.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🛟 Early expiry of cached objects",
+      "detail": "Cached a large number of objects for too long and want to update and shorten their TTLs.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🎪 Smoke test a new origin",
+      "detail": "Send a copy of your traffic to a test origin before returning a response from production.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🧻 Compute intersection of two lists",
+      "detail": "Useful for comparing capabilities with required permissions.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🔈 Prevent hotlinking of product images by third-party websites",
+      "detail": "Detect and reject requests from third-party websites that attempt to embed your images on their pages.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "✉️ Decompress and read gzipped responses",
+      "detail": "When you need to work on API and text responses from backends that support gzip.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🏈 Prohibit browser caching",
+      "detail": "Ensure resources are not cached on the front end, while allowing caching within Fastly.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🥎 Assemble content at the edge with Edge-side includes (ESI)",
+      "detail": "Use Fastly's support for ESI to combine multiple origin-hosted objects into a single response at the edge.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🥈 Clean backend responses",
+      "detail": "Remove headers added by backends that you don't want to emit to the browser, like amz- or goog- headers.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🚖 Redirect insecure HTTP to TLS (SSL, HTTPS) in VCL",
+      "detail": "Redirect any requests that come into a VCL service on insecure HTTP, to the equivalent TLS endpoint (the Compute platform does this automatically).",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🧩 Follow redirects at the edge",
+      "detail": "Protect clients from redirects by chasing them internally at the edge, and then return the eventual non-redirect response.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🧫 Cache '429' rate-limiter responses per IP",
+      "detail": "If a backend returns a 429, cache it for the requesting IP but continue to allow other clients to use origin.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🙊 Vary based on a cookie",
+      "detail": "Return different objects based on the presence of a cookie.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🌃 Remove querystring from static assets",
+      "detail": "Use the new Sec-Fetch-Dest header or URL patterns to identify assets that should not allow querystrings to be part of the cache key.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🔫 Geofence / block access to content by region",
+      "detail": "Group countries to cache content by custom regions or reject requests from some regions entirely.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🪆 Cache 'near you' content for each area using lat/long grid",
+      "detail": "Bucket users into small grid squares to allow for hyper-local content caching (e.g., \"stores near you\", \"local offers\").",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🛸 Set Google Analytics _ga cookie",
+      "detail": "Due to ITP 2.1 restrictions, cookies set in JavaScript may be limited to a 7-day TTL. Set your Google Analytics cookie on the edge to avoid this.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🏎️ Auto retry a secondary backend",
+      "detail": "If primary backend fails, retry with a different backend without caching the failure or reducing cache efficiency.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🔌 Retry image-optimization requests on origin failure",
+      "detail": "If primary backend fails, requests with IO enabled require some special handling.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🚒 Comprehensive logging",
+      "detail": "Fastly offers a myriad of different variables that you can log. See and test a large collection here.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "☎️ Enable features gradually",
+      "detail": "Avoid a huge inrush of traffic to origin caused by gradually applying changes that affect the cache key, like segmented caching, over hours or days.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🪑 Create image transform presets",
+      "detail": "Use custom, predefined classnames like large, medium, small, teaser, thumb, or article to control Fastly Image Optimizer and optionally prevent end-user access to native properties like 'width'.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "⚙️ Create montage poster frame images",
+      "detail": "Combine multiple source images into a single image and then optimize and serve the result.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🛠️ Anonymize client IPs for logging",
+      "detail": "Strip the last octet or compute a hash of client IP address for anonymization.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "📖 Log the IP version (IPv4/IPv6)",
+      "detail": "Identify which type of IP address was used by the client connecting to your Fastly service.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🏒 Send HTTP Basic Auth in request to origin",
+      "detail": "Convert a password sent by the client in the querystring into a Authorization header to your origin server.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "☁️ Cache POST/GraphQL query responses",
+      "detail": "GraphQL query requests are POSTs, but responses to POST typically can't be cached. Convert it to a querystring on a GET request to allow Fastly to cache GraphQL (or any HTTP POST) request.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🎮 Base64 URL path segments",
+      "detail": "Unknown data in URL paths can result in invalid URLs, but base64url is designed to be URL-safe.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🎭 Check validity of inputs using a non-crypto hash",
+      "detail": "Block or identify syntactically invalid requests at the edge by using a hash function of your choice.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🧨 Authenticate JSON Web Tokens at the edge",
+      "detail": "Decode the popular JWT format to verify user session tokens before forwarding trusted authentication data to your origin.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🛟 Use A/B testing to personalize responses",
+      "detail": "Serve different responses to separate user cohorts.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🧤 Redirect old URLs at the edge",
+      "detail": "Use a dictionary of URL mappings to serve your redirects at lightning speed.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "♦️ Flatten the curve of major traffic spikes with a waiting room",
+      "detail": "A totally stateless solution to hold back new users for a minimum waiting period to smooth out spikes in traffic.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "📐 Add time zone offset to requests",
+      "detail": "Divide the world into time bands of custom size and forward time zone data to your origin server.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🛹 Format time expressions",
+      "detail": "Format dates and times in a variety of ways.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🏝️ Perform redirects with wildcard patterns using a dictionary",
+      "detail": "Match URL prefixes and make use of configurable response status and querystring preservation.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🎶 Throttling per country over configurable time periods",
+      "detail": "Adjust the maximum TCP socket pacing for connections at peak times of day in busy regions.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🌏 CenturyLink-compatible token validation",
+      "detail": "Validate your CenturyLink tokens for access to video stream playlists.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🎈 Asynchronous origin requests with an ordered response",
+      "detail": "Process multiple requests in any order and still generates the same output every time. This example uses an external API to retrieve the names of 10 Star Wars characters, the logs show how the requests run in a different order every time while the output never changes (provided no request fails).",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🩰 Perform multiple origin requests asynchronously",
+      "detail": "Handle third-party requests as they are resolved.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "☄️ Slowing down responses (tarpit)",
+      "detail": "Force a response to be delivered very slowly to reduce the rate at which an attacker can send requests.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🪑 Support for Edge-Control header",
+      "detail": "Use custom edge code to implement support for the proprietary Edge-Control cache directive.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🔓 Enrich image responses with EXIF metadata",
+      "detail": "Use the `exif` Rust crate to decorate a backend response with image metadata.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🚜 Generate a QR code",
+      "detail": "Use open source libraries to dynamically serve a QR code based on query parameters.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "⛪ Use dynamic backends to follow redirects",
+      "detail": "Create a dynamic backend from the redirect response, and then get a response from the dynamic backend.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "💨 Bot detection using ratecounter",
+      "detail": "Rate counters are normally used for detecting high volume DoS-style attacks, but you can also use them to measure lower rates, to ensure that navigation between pages is happening at human speed.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "👘 Rate limit requests",
+      "detail": "Use ratecounters and penalty boxes to stop high-volume automated attacks against your website.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "⛏️ Validate domain on query string",
+      "detail": "Check the query string if it contains a valid domain. ",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🎭 Backend health status API",
+      "detail": "Create an HTTP API for real time backend health status",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "⚒️ Check for viruses using Virus Total",
+      "detail": "Sha256 hash a file upload and test the hash against the VirusTotal API",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🪵 Protect PNGs for Acropalypse",
+      "detail": "Remove extraneous data from PNG files created using screenshotting tools",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🧥 Transform a response while streaming it",
+      "detail": "Streaming transformations avoid buffering a response, reducing latency and memory consumption",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "✏️ Set a timeout on a Request",
+      "detail": "Configure a timeout for a specific origin request, rather than relying on the configuration settings for that origin",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🩻 Conduct security chaos experiments in requests",
+      "detail": "Strips cookies and forces cross-site origin headers in requests to verify security controls and logging are working as expected.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "👀 Block bad user-agents",
+      "detail": "Check for known bad bots and crawlers and deny traffic.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🌋 Rewrite url based on the subdomain",
+      "detail": "Check for a subdomain and rewrite the URL path.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "♦️ Deny access to certain file types",
+      "detail": "Check for specific URL extensions and deny access with a 403.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🧪 Block all traffic from certain countries",
+      "detail": "Check for a country code on an incoming request, and if it's present, deny access with a 403.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🖼️ Prevent race conditions with purge-all and shielding",
+      "detail": "If edge and shield POPs are purged in the wrong order, stale content may get re-cached. You can prevent that.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "😿 Use surrogate key purges for purge-all and single URL purge",
+      "detail": "Surrogate key purges are fast and flexible and can be used in place of single URL purge and purge-all.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🎧 Use regionally distributed origin servers",
+      "detail": "If you have multiple hosting locations, Fastly can route traffic to the closest one.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🪡 Pass all requests",
+      "detail": "Disable edge caching and skip the Fastly readthrough cache for every request, ensuring nothing is cached at the edge.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🗄️ Read environment variables",
+      "detail": "Read values from Fastly-defined env vars in Compute programs.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "👠 Register a dynamic backend",
+      "detail": "Backends can be defined at runtime in compute applications to make requests to any host on the internet.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🐵 Calculate the distance between two points on Earth",
+      "detail": "Calculate the physical geo distance in kilometers between places such as the end user's location and the Fastly POP they connected to.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "🎑 Overriding caching defaults based on a backend response",
+      "detail": "Conditionally apply a 5 minute caching limit based on a 404 backend response.",
+      "command": "echo 'hiya'",
+      "problemMatcher": []
+    }
+  ]
 }
