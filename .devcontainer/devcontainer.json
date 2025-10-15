@@ -24,7 +24,7 @@
   },
   "postAttachCommand": {
     "inform": "bash helpers/welcome.sh",
-    "build": "npm run start",
+    "build": "npm run examples && npm run start",
     "origin": "cd origin && npx --yes serve --no-port-switching=true"
   },
   "waitFor": "updateContentCommand",
