@@ -1,4 +1,6 @@
 #!/bin/bash
 # This script starts a new compute app
 
-echo $1
+npx @fastly/cli compute init --from=$1 --accept-defaults --auto-yes
+npm run build
+npm run start
