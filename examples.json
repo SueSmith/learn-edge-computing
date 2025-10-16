@@ -1,5 +1,140 @@
 [
   {
+    "title": "Default JavaScript Starter",
+    "summary": "A simple starter kit to make a Compute app with JS.",
+    "implementations": {
+      "javascript": {
+        "URL": "https://github.com/fastly/compute-starter-kit-javascript-default"
+      }
+    }
+  },
+  {
+    "title": "Default Expressly Starter",
+    "summary": "A basic expressly starter kit that demonstrates GET, POST, and middleware functionality.",
+    "implementations": {
+      "javascript": {
+        "URL": "https://github.com/fastly/compute-starter-kit-javascript-expressly"
+      }
+    }
+  },
+  {
+    "title": "JavaScript OAuth Starter",
+    "summary": "Connect to an identity provider and validate authentication status at the edge.",
+    "implementations": {
+      "javascript": {
+        "URL": "https://github.com/fastly/compute-js-auth"
+      }
+    }
+  },
+  {
+    "title": "Empty JavaScript Starter",
+    "summary": "An empty application template which returns a 200 OK response.",
+    "implementations": {
+      "javascript": {
+        "URL": "https://github.com/fastly/compute-starter-kit-javascript-empty"
+      }
+    }
+  },
+  {
+    "title": "Fanout Starter Kit",
+    "summary": "Enable Fanout on a service and forward to a backend.",
+    "implementations": {
+      "javascript": {
+        "URL": "https://github.com/fastly/compute-starter-kit-javascript-fanout"
+      }
+    }
+  },
+  {
+    "title": "Websockets Passthrough Starter",
+    "summary": "Implement websockets passthrough.",
+    "implementations": {
+      "javascript": {
+        "URL": "https://github.com/fastly/compute-starter-kit-javascript-websockets"
+      }
+    }
+  },
+  {
+    "title": "JavaScript Advanced Caching",
+    "summary": "Apply advanced caching techniques.",
+    "implementations": {
+      "javascript": {
+        "URL": "https://github.com/fastly/compute-starter-kit-javascript-advanced-caching"
+      }
+    }
+  },
+  {
+    "title": "JavaScript OpenAPI Validation",
+    "summary": "Validate requests against an OpenAPI document.",
+    "implementations": {
+      "javascript": {
+        "URL": "https://github.com/fastly/compute-starter-kit-javascript-openapi-validation"
+      }
+    }
+  },
+  {
+    "title": "Waiting Room Queue",
+    "summary": "Park your users in a virtual queue to reduce the demand on your origins during peak times.",
+    "implementations": {
+      "javascript": {
+        "URL": "https://github.com/fastly/compute-starter-kit-javascript-queue"
+      }
+    }
+  },
+  {
+    "title": "Optimizely Feature Experimentation",
+    "summary": "A basic starter kit with Optimizely built in.",
+    "implementations": {
+      "javascript": {
+        "URL": "https://github.com/optimizely/fastly-compute-starter-kit"
+      }
+    }
+  },
+  {
+    "title": "JavaScript Webpack Starter",
+    "summary": "Compute starter kit for JavaScript, demonstrating webpack for bundling.",
+    "implementations": {
+      "javascript": {
+        "URL": "https://github.com/fastly/compute-starter-kit-javascript-webpack"
+      }
+    }
+  },
+  {
+    "title": "Fauna Starter Kit",
+    "summary": "A starter app for using Fauna on Compute.",
+    "implementations": {
+      "javascript": {
+        "URL": "https://github.com/fauna-labs/fastly-compute-at-edge-starter-kit"
+      }
+    }
+  },
+  {
+    "title": "Default TypeScript Starter",
+    "summary": "A basic app that demonstrates routing, synthetic responses and overriding caching rules.",
+    "implementations": {
+      "javascript": {
+        "URL": "https://github.com/fastly/compute-starter-kit-typescript-default"
+      }
+    }
+  },
+  {
+    "title": "TypeScript KV Store Starter",
+    "summary": "A TypeScript starter kit that uses Fastly's KV Store.",
+    "implementations": {
+      "javascript": {
+        "URL": "https://github.com/fastly/compute-starter-kit-typescript-kv-store"
+      }
+    }
+  },
+  {
+    "title": "TypeScript Hono Starter",
+    "summary": "A TypeScript starter kit for Hono on Compute.",
+    "implementations": {
+      "javascript": {
+        "URL": "https://github.com/fastly/compute-starter-kit-typescript-hono"
+      }
+    }
+  },
+  {
     "title": "Purge everything under a URL path prefix",
     "summary": "Use surrogate keys to link all objects under each path prefix, allowing wildcard purging of all URLs that share a common prefix.",
     "tags": ["Performance", "Cache", "Developer experience"],
