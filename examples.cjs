@@ -5,7 +5,8 @@ let emoji = ["👻","👽","👾","🤖","😺","😸","😹","😻","😼","�
 let examples = require("./examples.json");
 let jsegs = examples.filter((je) => je.implementations.hasOwnProperty("javascript") );
 let tasks = jsegs.map((eg, i) => {
-    return { type: "shell", label: emoji[Math.floor(Math.random()*emoji.length)]+" "+eg.title, detail: eg.summary, command: "bash helpers/start.sh "+eg.implementations.javascript.fiddleId, problemMatcher: [] }
+    let url = eg.implementations.javascript.fiddleId ? "https://fiddle.fastly.dev/fiddle/"+eg.implementations.javascript.fiddleId : eg.implementations.javascript.url;
+    return { type: "shell", label: emoji[Math.floor(Math.random()*emoji.length)]+" "+eg.title, detail: eg.summary, command: "bash helpers/start.sh "+url, problemMatcher: [] }
 });
 let tsk = { version: "2.0.0", tasks: tasks };
 //console.log(tsk);
